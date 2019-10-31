@@ -101,9 +101,13 @@ public class AdsService implements IAdsService {
 				case "CHALET": 
 					if(ad.getGardenSize() != null)
 						fullAd = true;
-				case "PISO":
+					else
+						break;
+				case "FLAT":
 					if(ad.getDescription().length() > 0 && ad.getHouseSize() != null)
 						fullAd = true;
+					else
+						fullAd = false;
 					break;
 			}
 			if(fullAd) score += 40;
