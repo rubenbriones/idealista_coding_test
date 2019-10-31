@@ -3,73 +3,18 @@ package com.idealista.infrastructure.api;
 import java.util.Date;
 import java.util.List;
 
-public class QualityAd {
+import com.idealista.application.AdLoaded;
 
-    private Integer id;
-    private String typology;
-    private String description;
-    private List<String> pictureUrls;
-    private Integer houseSize;
-    private Integer gardenSize;
-    private Integer score;
-    private Date irrelevantSince;
+public class QualityAd extends AdLoaded {
 
-    public Integer getId() {
-        return id;
-    }
+	private Date irrelevantSince;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getTypology() {
-        return typology;
-    }
-
-    public void setTypology(String typology) {
-        this.typology = typology;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<String> getPictureUrls() {
-        return pictureUrls;
-    }
-
-    public void setPictureUrls(List<String> pictureUrls) {
-        this.pictureUrls = pictureUrls;
-    }
-
-    public Integer getHouseSize() {
-        return houseSize;
-    }
-
-    public void setHouseSize(Integer houseSize) {
-        this.houseSize = houseSize;
-    }
-
-    public Integer getGardenSize() {
-        return gardenSize;
-    }
-
-    public void setGardenSize(Integer gardenSize) {
-        this.gardenSize = gardenSize;
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
-    }
-
+    public QualityAd(Integer id, String typology, String description, Integer houseSize, Integer gardenSize,
+			List<String> pictureUrls, Integer score, Date irrelevantSince) {
+		super(id, typology, description, houseSize, gardenSize, pictureUrls, score);
+		this.irrelevantSince = irrelevantSince;
+	}
+    
     public Date getIrrelevantSince() {
         return irrelevantSince;
     }

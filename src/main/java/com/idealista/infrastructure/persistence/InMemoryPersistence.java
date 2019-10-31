@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class InMemoryPersistence {
+public class InMemoryPersistence implements IAdsRepository{
 
     private List<AdVO> ads;
     private List<PictureVO> pictures;
@@ -35,5 +35,19 @@ public class InMemoryPersistence {
         pictures.add(new PictureVO(8, "http://www.idealista.com/pictures/8", "HD"));
     }
 
-    //TODO crea los métodos que necesites
+	@Override
+	public List<AdVO> findAllAds() {
+		return ads;
+	}
+
+	@Override
+	public List<PictureVO> getPicturesById(List<Integer> ids) {
+		//We assume that the images are always in the position: Id-1.
+		List<PictureVO> pics = new ArrayList<PictureVO>();
+		for(Integer id : ids) {
+			pics.add(pictures.get(id-1));
+		}
+		return pics;
+	}
+
 }
