@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class InMemoryPersistence implements IAdsRepository{
@@ -41,13 +43,19 @@ public class InMemoryPersistence implements IAdsRepository{
 	}
 
 	@Override
-	public List<PictureVO> getPicturesById(List<Integer> ids) {
-		//We assume that the images are always in the position: Id-1.
-		List<PictureVO> pics = new ArrayList<PictureVO>();
-		for(Integer id : ids) {
-			pics.add(pictures.get(id-1));
+	public Map<Integer, List<PictureVO>> findPictures(List<AdVO> ads) {
+		Map<Integer, List<PictureVO>> map = new HashMap<Integer, List<PictureVO>>();
+		
+		for(AdVO ad : ads) {
+			List<PictureVO> pics = new ArrayList<PictureVO>();
+			for(Integer picId : ad.getPictures()) {
+				//We assume that the images are always in the position: Id-1.
+				pics.add(pictures.get(picId-1));
+			}
+			map.put(ad.getId(), pics);
 		}
-		return pics;
+		
+		return map;
 	}
 
 }
