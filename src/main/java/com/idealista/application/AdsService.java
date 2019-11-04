@@ -18,7 +18,7 @@ import com.idealista.infrastructure.persistence.PictureVO;
 
 @Service
 public class AdsService implements IAdsService {
-
+	
 	@Autowired
     private IAdsRepository repository;
 	
@@ -53,7 +53,7 @@ public class AdsService implements IAdsService {
 			for(PictureVO p : pics) picsUrls.add(p.getUrl());
 			
 			AdLoaded adConverted = null;
-			if(adVO.getScore() >= 40) {
+			if(adVO.getScore() >= Scores.MIN_PUBLIC_SCORE) {
 				adConverted = new PublicAd(adVO.getId(), adVO.getTypology(), adVO.getDescription(), adVO.getHouseSize(), adVO.getGardenSize(), picsUrls, adVO.getScore());
 			}
 			else {

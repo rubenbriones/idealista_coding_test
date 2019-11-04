@@ -7,6 +7,8 @@ import com.idealista.infrastructure.persistence.PictureVO;
 
 public class ScoreRuleFullAd implements ScoreRule {
 
+	private final static int FULL_AD = 40;
+	
 	@Override
 	public int getScore(AdVO ad, List<PictureVO> pics) {
 		if(ad.getPictures().size() > 0) {
@@ -29,7 +31,7 @@ public class ScoreRuleFullAd implements ScoreRule {
 					break;
 			}
 			if(fullAd)
-				return 40;
+				return FULL_AD;
 		}
 		
 		return 0;		

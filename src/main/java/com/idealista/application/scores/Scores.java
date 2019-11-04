@@ -8,11 +8,15 @@ import com.idealista.infrastructure.persistence.PictureVO;
 
 public class Scores {
 	
-	private static final Scores SINGLE_INSTANCE = new Scores();
-	
 	public static final int MIN_SCORE = 0;
 	public static final int MAX_SCORE = 100;
+	//Minimum score that an ad must have to be public.
+	public final static int MIN_PUBLIC_SCORE = 40;
 	
+
+	private static final Scores SINGLE_INSTANCE = new Scores();
+	
+	//List with all the ScoreRule we want to apply when calculating the total score of an ad.
 	private List<ScoreRule> scoresRules;
 	
 	private Scores() {
